@@ -1,0 +1,72 @@
+<< GraphQL >>
+~ its a query language for your API, and a server-side runtime for executing queries using a type system you define for your data.
+~ A GraphQL service is created by defining types and fields on those types, then providing functions for each field on each type. 
+
+<< Main Characteristic >>
+1:> Strongly Typed.
+~ each field  has a specific data type. this makes it easy to validate and handle data on the client and server side.
+
+2:> Query Language.
+~ it has it own query language that allows clients to specify exactly what data they need. This reduces over fetching of data and improves performance.
+
+3:> Single Endpoint.
+~ GraphQL its a single endpoint. which means that clients can fetch all the data they need from a single request.
+
+4:> Declarative.
+~ GraphQL APIs are declarative, which means that clients specify what they want,not hot to get it. this allows for mare efficient and flexible data fetching.
+
+5:> Schema-Driven.
+~ schema defines the structure of the data and the available queries and mutations. this makes it easier for developers to understand and work with the API.
+
+
+CONCEPTS OF GraphQL
+a:> Object types
+~ it as complex type that represents a collection of field. they are used to define the structure of data that can be queried and mutated through a GraphQL API.
+~ each object type has a unique name and set of fields, where each field has a name and a type. the type of field can be a scalar type(such as Int,String or Boolean), another ObjectType, or a list of another type. 
+
+example
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  friends: [User!]!
+}
+
+~ the ! means the the field is mandatory. In this example, the "User" Object Type has four fields: "id", "name", "email", and "friends". The "id" field has a type of ID, which is a built-in scalar type in GraphQL that represents a unique identifier. The "name" and "email" fields have a type of String, and the "friends" field has a type of a list of "User" Objects.
+
+b:> queries
+~ A query is a request for specific data from the server. the query specifies the shape of the data that the client wants to receive and the server responds with the requested data in the same shape.
+
+example query
+query {
+  user(id: "1") {
+    name
+    email
+    age
+  }
+}
+
+example response
+{
+  "data": {
+    "user": {
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "age": 25
+    }
+  }
+}
+
+c:> mutations
+~ the are used to create or modify data on the sever. Like queries, mutations specify the shape of the data being sent to and received from the server.
+
+example:
+
+mutation {
+  createUser(name: "Jane Doe", email: "janedoe@example.com", age: 30) {
+    id
+    name
+    email
+    age
+  }
+}
