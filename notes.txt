@@ -70,3 +70,19 @@ mutation {
     age
   }
 }
+
+RESOVLERS
+~ its a function responsible for fetching the data for a specific field defined in a GraphQL schema. they are bridge between the schema and the data source. it receives four parameters.
+
+a:> parent
+~ it refers to the parent field value.
+
+b:> args
+~ the argument passed to the current field. its an object with key-value pairs of the argument names and their values.
+
+c:> context
+~ its contains information about the request such as the currently authenticated user, database connection.
+
+d:> info
+~ contains information about the query including the field name,alias, and the query document AST
+
